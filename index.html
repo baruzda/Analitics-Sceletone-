@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>HR-аналитика</title>
+    <link rel="stylesheet" href="page-skeleton.css" />
+    <link rel="stylesheet" href="demo.css" />
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <div class="sk-chrome" aria-hidden="true">
+      <header class="sk-heading">
+        <p class="sk-page-title">HR-аналитика</p>
+        <div class="sk-search-field">
+          <img src="upload/search-icon.svg" alt="" width="20" height="20" aria-hidden="true" />
+          <span class="sk-search-placeholder">поиск показателя</span>
+        </div>
+      </header>
+
+      <div class="sk-region-block">
+        <span class="sk-skel-bar sk-skel-bar--short"></span>
+        <div class="sk-region-row">
+          <span class="sk-skel-bar sk-skel-bar--long"></span>
+          <span class="sk-skel-bar sk-skel-bar--icon"></span>
+        </div>
+      </div>
+
+      <div class="sk-chips">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <div class="sk-filters-row">
+        <div class="sk-filters-group">
+          <span class="sk-filter-item">
+            за неделю
+            <img src="upload/chevron-down-16.svg" alt="" width="16" height="16" aria-hidden="true" />
+          </span>
+          <span class="sk-filter-item">
+            6 неделя 2026
+            <img src="upload/chevron-down-16.svg" alt="" width="16" height="16" aria-hidden="true" />
+          </span>
+        </div>
+      </div>
+
+      <div class="sk-cards-grid"></div>
+      <div class="sk-chips-fade"></div>
+    </div>
+
+    <div class="demo-controls" aria-label="Управление демо">
+      <span class="demo-status" id="status">Скелетон активен</span>
+      <button type="button" id="btn-load" class="primary demo-show-btn">ПОКАЗАТЬ ДЕМО</button>
+      <button type="button" id="btn-reset">Сбросить</button>
+    </div>
+
+    <template id="sk-card-template">
+      <div class="sk-metric-card">
+        <span class="sk-skel-bar sk-card-bar--title"></span>
+        <span class="sk-skel-bar sk-card-bar--subtitle"></span>
+        <div class="sk-card-value-row">
+          <span class="sk-skel-bar sk-card-bar--value"></span>
+          <span class="sk-skel-bar sk-card-bar--pill"></span>
+        </div>
+        <span class="sk-skel-bar sk-card-bar--baseline"></span>
+      </div>
+    </template>
+
+    <template id="content-template">
+      <div class="cf">
+        <header class="page-header">
+          <h1 class="page-title">HR-аналитика</h1>
+          <div class="search-field" role="search">
+            <img src="upload/search-icon.svg" alt="" aria-hidden="true" />
+            <input
+              type="search"
+              class="search-input"
+              placeholder="поиск показателя"
+              readonly
+              tabindex="-1"
+              aria-label="поиск показателя"
+            />
+          </div>
+        </header>
+
+        <section class="region-block" aria-label="Макрорегион">
+          <div class="region-text">
+            <p class="region-label">макрорегион</p>
+            <p class="region-value">ЦО Макрорегион Северо-Запад Калининград ТС5</p>
+          </div>
+          <button type="button" class="region-chevron" aria-label="Выбрать макрорегион">
+            <img src="upload/chevron-down.svg" alt="" width="24" height="24" aria-hidden="true" />
+          </button>
+        </section>
+
+        <div class="scenarios-wrap">
+          <div class="scenarios" role="group" aria-label="Сценарии">
+            <button type="button" class="chip is-active" aria-pressed="true">посещение магазина</button>
+            <button type="button" class="chip" aria-pressed="false">оперком</button>
+            <button type="button" class="chip" aria-pressed="false">итоги месяца</button>
+            <button type="button" class="chip" aria-pressed="false">все <span class="chip-counter">25</span></button>
+            <button type="button" class="chip chip-action" aria-pressed="false">
+              <img src="upload/trash-icon.svg" alt="" aria-hidden="true" />
+              создать / изменить
+            </button>
+          </div>
+        </div>
+
+        <div class="filters-row">
+          <div class="filters-group">
+            <button type="button" class="filter-btn">
+              за неделю
+              <img src="upload/chevron-down-16.svg" alt="" width="16" height="16" aria-hidden="true" />
+            </button>
+            <button type="button" class="filter-btn">
+              6 неделя 2026
+              <img src="upload/chevron-down-16.svg" alt="" width="16" height="16" aria-hidden="true" />
+            </button>
+          </div>
+        </div>
+
+        <div class="cards">
+          <div class="cards-row">
+            <article class="metric-card">
+              <h2 class="metric-title">ресурсная комплектность</h2>
+              <div class="metric-info">
+                <div class="metric-value-row">
+                  <span class="metric-value is-red">78,6%</span>
+                  <span class="metric-trend">↑ 1,5</span>
+                </div>
+                <p class="metric-baseline">н5 79,1%</p>
+              </div>
+            </article>
+            <article class="metric-card">
+              <h2 class="metric-title">доля собственного персонала</h2>
+              <div class="metric-info">
+                <div class="metric-value-row">
+                  <span class="metric-value is-orange">90,3%</span>
+                  <span class="metric-trend">↓ 1,5</span>
+                </div>
+                <p class="metric-baseline">январь 91,8%</p>
+              </div>
+            </article>
+          </div>
+          <div class="cards-row">
+            <article class="metric-card">
+              <h2 class="metric-title">доля внешнего персонала</h2>
+              <div class="metric-info">
+                <div class="metric-value-row">
+                  <span class="metric-value">92,3%</span>
+                  <span class="metric-trend">↑ 1,4</span>
+                </div>
+                <p class="metric-baseline">5 неделя 90,9%</p>
+              </div>
+            </article>
+            <article class="metric-card">
+              <h2 class="metric-title">производ-ность РЕТ/чч</h2>
+              <div class="metric-info">
+                <div class="metric-value-row">
+                  <span class="metric-value">245</span>
+                  <span class="metric-trend">↑ 15</span>
+                </div>
+                <p class="metric-baseline">январь 230</p>
+              </div>
+            </article>
+          </div>
+          <div class="cards-row">
+            <article class="metric-card">
+              <h2 class="metric-title">ССЧ с внутр. совместителями</h2>
+              <div class="metric-info">
+                <div class="metric-value-row">
+                  <span class="metric-value">8 500</span>
+                  <span class="metric-trend">↑ 100</span>
+                </div>
+                <p class="metric-baseline">5 неделя 8400</p>
+              </div>
+            </article>
+            <article class="metric-card">
+              <h2 class="metric-title">неконтр-мый абсентеизм</h2>
+              <div class="metric-info">
+                <div class="metric-value-row">
+                  <span class="metric-value is-red">90,2%</span>
+                  <span class="metric-trend">↑ 8,6</span>
+                </div>
+                <p class="metric-baseline">январь 81,6%</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </template>
+
+    <script>
+      const SKELETON_CARD_COUNT = 6;
+
+      const app = document.getElementById("app");
+      const skCardTemplate = document.getElementById("sk-card-template");
+      const contentTemplate = document.getElementById("content-template");
+      const skCardsGrid = document.querySelector(".sk-cards-grid");
+      const status = document.getElementById("status");
+      const btnLoad = document.getElementById("btn-load");
+      const btnReset = document.getElementById("btn-reset");
+
+      let autoloadTimer = 0;
+
+      function initSkeletonCards() {
+        const fragment = document.createDocumentFragment();
+        for (let i = 0; i < SKELETON_CARD_COUNT; i += 1) {
+          fragment.appendChild(skCardTemplate.content.cloneNode(true));
+        }
+        skCardsGrid.appendChild(fragment);
+      }
+
+      function setStatus(text) {
+        status.textContent = text;
+      }
+
+      function clearContent() {
+        window.clearTimeout(autoloadTimer);
+        autoloadTimer = 0;
+        app.querySelectorAll(".cf").forEach((node) => node.remove());
+        setStatus("Скелетон активен");
+        btnLoad.disabled = false;
+      }
+
+      function loadContent() {
+        if (app.querySelector(".cf")) return;
+        window.clearTimeout(autoloadTimer);
+        autoloadTimer = 0;
+        app.appendChild(contentTemplate.content.cloneNode(true));
+        setStatus("Данные загружены");
+        btnLoad.disabled = true;
+      }
+
+      initSkeletonCards();
+      btnLoad.addEventListener("click", loadContent);
+      btnReset.addEventListener("click", clearContent);
+
+      if (new URLSearchParams(location.search).has("autoload")) {
+        autoloadTimer = window.setTimeout(loadContent, 3000);
+      }
+    </script>
+  </body>
+</html>
